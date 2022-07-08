@@ -110,14 +110,12 @@ endif()
 # Compiler specific stuff
 IF(MSVC)
 	SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHsc")
-ELSEIF(APPLE)
-	SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fobjc-arc -xobjective-c++")
 ENDIF(MSVC)
 
 IF(WIN32)
 	# Nothing here (yet)
 ELSEIF(APPLE)
-	link_libraries(${Vulkan_LIBRARY} "-framework AppKit" "-framework QuartzCore")
+	# Libraries added to base
 ELSE(WIN32)
 	link_libraries(${XCB_LIBRARIES} ${Vulkan_LIBRARY} ${Vulkan_LIBRARY} ${WAYLAND_CLIENT_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 ENDIF(WIN32)
